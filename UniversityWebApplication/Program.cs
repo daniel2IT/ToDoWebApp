@@ -16,7 +16,7 @@ namespace UniversityWebApplication
             CreateHostBuilder(args).Build().Run();
         }
 
-        // small changes
+        // pull request from new created branche
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
