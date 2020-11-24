@@ -67,7 +67,7 @@ App architecture.
     </tr>
 </table>
 
-## Thanks
+<h1 align="center"> Thanks </h1>
 
 This course organized by
 [Raimundas Banevicius](#).
