@@ -9,12 +9,14 @@
 
 ### **FREE .NET course every Tuesday starting 17th of November at 6 pm.**
 
-### **You already have to know:**
+<h2 align="center"> You already have to know: </h2>
+<b>
 C# basics: variables, arithmetic operations, conditional statements, loops, functions, Overloading, Arrays, List, Dictionary, Enum, Struct.
-C# OOP : Class, Inheritance, Overriding, Abstract, Interfaces, Static, Properties.
+C# OOP : Class, Inheritance, Overriding, Abstract, Interfaces, Static, Properties.  </b>
 
-# **You will learn:**
-Git, Linq, Unit testing/TTD, MVC web apps, Entity Framework, Web Api, App architecture.
+<h2 align="center"> You will learn: </h2>
+<b>
+Git, Linq, Unit testing/TTD, MVC web apps, Entity Framework, Web Api, App architecture. </b>
 
 
 
