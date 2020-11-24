@@ -84,13 +84,14 @@ App architecture.
 Thanks goes to these wonderful people:
 
 <table>
- <tr>
-<td align="center"><a href="https://github.com/KursasLeksteje"><img src="https://avatars2.githubusercontent.com/u/1368173?s=460&v=4" width="100px;" alt=""/><br /><sub><b>KursasLeksteje</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
-      </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/KursasLeksteje"><img src="https://avatars2.githubusercontent.com/u/1368173?s=460&v=4" width="100px;" alt=""/><br /><sub><b>KursasLeksteje</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
+    </tr>
      <tr>
-      <td align="center"><a href="https://github.com/sarunasdubinskas"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQH3fxVYJuxbAw/profile-displayphoto-shrink_400_400/0?e=1611792000&v=beta&t=zTkPU1pzw72WTand8dV_sOlIZG24Wb8nkolKSOD6G98" width="100px;" alt=""/><br /><sub><b>sarunasdubinskas</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
- </tr>
+        <td align="center"><a href="https://github.com/sarunasdubinskas"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQH3fxVYJuxbAw/profile-displayphoto-shrink_400_400/0?e=1611792000&v=beta&t=zTkPU1pzw72WTand8dV_sOlIZG24Wb8nkolKSOD6G98" width="100px;" alt=""/><br /><sub><b>sarunasdubinskas</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
+    </tr>
 </table>
+
 ## Thanks
 
 This course is inspired in [asdasda](#) by
