@@ -10,6 +10,7 @@
 ### **FREE .NET course every Tuesday starting 17th of November at 6 pm.**
 
 <h2 align="center"> You already have to know: </h2>
+
 ```diff
 - C# basics: variables, arithmetic operations, conditional statements, loops, functions, Overloading, Arrays, List, Dictionary, Enum, Struct.
 C# OOP : Class, Inheritance, Overriding, Abstract, Interfaces, Static, Properties.
