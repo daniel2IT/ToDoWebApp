@@ -41,10 +41,8 @@ Unit testing,
 Test Driven Development(TDD),
 + .
 MVC web apps,     
-
 - N
 Entity Framework, 
-
 - E
 App architecture. 
 - T
