@@ -70,7 +70,7 @@ App architecture.
 
 *The ASP.NET Core MVC framework is a lightweight, open source, highly testable presentation framework optimized for use with ASP.NET Core. ASP.NET Core MVC provides a patterns-based way to build dynamic websites that enables a clean separation of concerns.*
 
-## Contributor
+<h1 align="center"> Contributor </h1>
 
 <table align="center">
     <tr>
@@ -78,9 +78,9 @@ App architecture.
     </tr>
 </table>
 
-## Collaborator
+<h1 align="center"> Collaborator </h1>
 
-Thanks goes to these wonderful people:
+<h3 align="center"> Thanks goes to these wonderful people: </h3>
 
 <table  align="center">
     <tr>
