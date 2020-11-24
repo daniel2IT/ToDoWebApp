@@ -29,13 +29,23 @@ Interfaces, Static, Properties, Loops.
 <h2 align="center"> You will learn: </h2>
 
 ```diff
-Git, Linq,        ! C
-Unit testing/TTD, ! A
-MVC web apps,     + M
-Entity Framework, + P
+! C
+Git,                    
+! A
+Linq,
+! M
+Unit testing,                            
++ P 
+Test Driven Development(TDD),
++ .
+MVC web apps,             
++ N
+Entity Framework, 
+- E
+App architecture. 
+- T
 
-Web Api,          - C
-App architecture. - #
+- :)
 ```
 
 # **ASP .NET Core MVC**
