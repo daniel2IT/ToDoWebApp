@@ -12,17 +12,24 @@
 <h2 align="center"> You already have to know: </h2>
 
 ```diff
-! C# basics: variables, arithmetic operations, conditional statements, loops,
-+ functions, Overloading, Arrays, List, Dictionary, Enum, Struct.
-- C# OOP : Class, Inheritance, Overriding, Abstract, Interfaces, Static, Properties.
+C# basics: variables, arithmetic operations,       ! C
+conditional statements, loops,                     ! O
+functions, Overloading, Arrays, List, Dictionary,  + D
+Enum, Struct.                                      + I
+C# OOP : Class, Inheritance, Overriding, Abstract, - N
+Interfaces, Static, Properties.                    - G
 ```
 
 <h2 align="center"> You will learn: </h2>
 
 ```diff
-Git, Linq, Unit testing/TTD, !
-MVC web apps, Entity Framework, +
-Web Api, App architecture.  -
+Git, Linq,        ! C
+Unit testing/TTD, ! A
+MVC web apps,     + M
+Entity Framework, + P
+
+Web Api,          - C
+App architecture. - #
 ```
 
 # **ASP .NET Core MVC**
