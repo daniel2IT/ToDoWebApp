@@ -84,8 +84,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 ## Thanks
 
-This course is inspired in [pretty-diff](#) by
-[Scott González](#).
+This course is inspired in [asdasda](#) by
+[xcascas](#).
 
 1. Daniel - [Developer](https://www.greatsampleresume.com/job-responsibilities/it-developer-responsibilities/) - *daniel.vaskevic123@gmail.com*
 
