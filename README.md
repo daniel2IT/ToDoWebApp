@@ -12,12 +12,18 @@
 <h2 align="center"> You already have to know: </h2>
 
 ```diff
-C# basics: variables, arithmetic operations,       !C
-!conditional statements, loops,                     ! O
-! functions, Overloading, Arrays, List, Dictionary,  + D
-Enum, Struct.                                      + I ! 2323 2
-C# OOP : Class, Inheritance, Overriding, Abstract, - N
-Interfaces, Static, Properties.                    - G
+C# basics: variables, arithmetic operations,       
+! C
+conditional statements, loops,                     
+! O
+functions, Overloading, Arrays, List, Dictionary,  
++ D
+Enum, Struct.                                      
++ I 
+C# OOP : Class, Inheritance, Overriding, Abstract, 
+- N
+Interfaces, Static, Properties.                    
+- G
 ```
 
 <h2 align="center"> You will learn: </h2>
