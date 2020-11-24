@@ -5,9 +5,9 @@
     <img width="260" height="200" src="https://lh3.googleusercontent.com/HH_1Uj3FZGYihf7ANQJlMA_J97xWGCN0FJzNEryAwnLGWTMnIBVo6HLPrtzHxCXocMc0=s85">
 </p>
 
-### **We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs**
+### We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs
 
-### **FREE .NET course every Tuesday starting 17th of November at 6 pm.**
+### FREE .NET course every Tuesday starting 17th of November at 6 pm.
 
 <h2 align="center"> You already have to know: </h2>
 
