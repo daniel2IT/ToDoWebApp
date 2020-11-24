@@ -64,7 +64,9 @@ App architecture.
 
 ### What is ASP NET core MVC?
 
-![image](https://anascheriya.com/wp-content/uploads/2016/10/asp-net-core-logo-proposal.png)
+<p align="center">
+    <img  src="https://anascheriya.com/wp-content/uploads/2016/10/asp-net-core-logo-proposal.png">
+</p>
 
 *The ASP.NET Core MVC framework is a lightweight, open source, highly testable presentation framework optimized for use with ASP.NET Core. ASP.NET Core MVC provides a patterns-based way to build dynamic websites that enables a clean separation of concerns.*
 
