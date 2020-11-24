@@ -36,16 +36,18 @@ Linq,
 ! M
 Unit testing,                            
 + P 
+
++ 
 Test Driven Development(TDD),
 + .
-MVC web apps,             
-+ N
+MVC web apps,     
+
+- N
 Entity Framework, 
+
 - E
 App architecture. 
 - T
-
-- :)
 ```
 
 # **ASP .NET Core MVC**
