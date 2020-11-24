@@ -13,9 +13,9 @@
 
 ```diff
 C# basics: variables, arithmetic operations,       !C
-conditional statements, loops,                     ! O
-functions, Overloading, Arrays, List, Dictionary,  + D
-Enum, Struct.                                      + I
+!conditional statements, loops,                     ! O
+! functions, Overloading, Arrays, List, Dictionary,  + D
+Enum, Struct.                                      + I ! 2323 2
 C# OOP : Class, Inheritance, Overriding, Abstract, - N
 Interfaces, Static, Properties.                    - G
 ```
