@@ -20,9 +20,9 @@
 <h2 align="center"> You will learn: </h2>
 
 ```diff
-! Git, Linq, Unit testing/TTD,
-+ MVC web apps, Entity Framework,
-- Web Api, App architecture. 
+Git, Linq, Unit testing/TTD, !
+MVC web apps, Entity Framework, +
+Web Api, App architecture.  -
 ```
 
 # **ASP .NET Core MVC**
