@@ -72,8 +72,8 @@ App architecture.
 
 ## Contributor
 
-<table>
-    <tr align="center">
+<table align="center">
+    <tr>
       <td align="center"><a href="https://github.com/daniel2IT"><img src="https://avatars3.githubusercontent.com/u/50612327?s=460&u=1614a57bfccd4ca1ee28e5920200b3b0f9bf15df&v=4" width="100px;" alt=""/><br /><sub><b>daniel2IT</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">🚧</a></td>
     </tr>
 </table>
@@ -83,7 +83,7 @@ App architecture.
 Thanks goes to these wonderful people:
 
 <table  align="center">
-    <tr  align="center">
+    <tr>
       <td align="center"><a href="https://github.com/KursasLeksteje"><img src="https://avatars2.githubusercontent.com/u/1368173?s=460&v=4" width="100px;" alt=""/><br /><sub><b>KursasLeksteje</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
      <td align="center"><a href="https://github.com/sarunasdubinskas"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQH3fxVYJuxbAw/profile-displayphoto-shrink_400_400/0?e=1611792000&v=beta&t=zTkPU1pzw72WTand8dV_sOlIZG24Wb8nkolKSOD6G98" width="100px;" alt=""/><br /><sub><b>sarunasdubinskas</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
     </tr>
