@@ -1,5 +1,5 @@
-# About
-## **Here it is Season 2 of our inside academy "Coding Camp Online"!**
+<h1 align="center"> About </h1>
+<h2 align="center"> **Here it is Season 2 of our inside academy "Coding Camp Online"!** </h2>
 
 <p align="center">
     <img width="260" height="200" src="https://lh3.googleusercontent.com/HH_1Uj3FZGYihf7ANQJlMA_J97xWGCN0FJzNEryAwnLGWTMnIBVo6HLPrtzHxCXocMc0=s85">
