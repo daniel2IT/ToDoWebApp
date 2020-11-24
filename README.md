@@ -2,7 +2,7 @@
 <h2 align="center">Season 2 of academy "Coding Camp Online"</h2>
 
 <p align="center">
-    <img width="260" height="200" src="https://lh3.googleusercontent.com/HH_1Uj3FZGYihf7ANQJlMA_J97xWGCN0FJzNEryAwnLGWTMnIBVo6HLPrtzHxCXocMc0=s85">
+    <img width="460" height="300" src="https://wonikjang.github.io/result_images/som_resized.png">
 </p>
 
 ### We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs
