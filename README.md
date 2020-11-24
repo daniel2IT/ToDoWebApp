@@ -70,18 +70,21 @@ App architecture.
 
 *The ASP.NET Core MVC framework is a lightweight, open source, highly testable presentation framework optimized for use with ASP.NET Core. ASP.NET Core MVC provides a patterns-based way to build dynamic websites that enables a clean separation of concerns.*
 
-## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## Contributor
 
 <table>
     <tr>
       <td align="center"><a href="https://github.com/daniel2IT"><img src="https://avatars3.githubusercontent.com/u/50612327?s=460&u=1614a57bfccd4ca1ee28e5920200b3b0f9bf15df&v=4" width="100px;" alt=""/><br /><sub><b>daniel2IT</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://github.com/daniel2IT"><img src="https://avatars3.githubusercontent.com/u/50612327?s=460&u=1614a57bfccd4ca1ee28e5920200b3b0f9bf15df&v=4" width="100px;" alt=""/><br /><sub><b>daniel2IT</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖</a></td>
-      <td align="center"><a href="https://github.com/daniel2IT"><img src="https://avatars3.githubusercontent.com/u/50612327?s=460&u=1614a57bfccd4ca1ee28e5920200b3b0f9bf15df&v=4" width="100px;" alt=""/><br /><sub><b>daniel2IT</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖</a></td>
+
     </tr>
 </table>
 
+## Collaborator
+
+Thanks goes to these wonderful people:
+
+      <td align="center"><a href="https://github.com/KursasLeksteje"><img src="https://avatars2.githubusercontent.com/u/1368173?s=460&v=4" width="100px;" alt=""/><br /><sub><b>daniel2IT</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
+      <td align="center"><a href="https://github.com/sarunasdubinskas"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQH3fxVYJuxbAw/profile-displayphoto-shrink_400_400/0?e=1611792000&v=beta&t=zTkPU1pzw72WTand8dV_sOlIZG24Wb8nkolKSOD6G98" width="100px;" alt=""/><br /><sub><b>daniel2IT</b></sub></a><br /><a href="#maintenance-dsabanin" title="Maintenance">📖💬</a></td>
 
 
 ## Thanks
