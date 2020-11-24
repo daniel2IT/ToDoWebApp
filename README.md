@@ -69,8 +69,5 @@ App architecture.
 
 ## Thanks
 
-This course is inspired in [asdasda](#) by
-[xcascas](#).
-
-1. Daniel - [Developer](https://www.greatsampleresume.com/job-responsibilities/it-developer-responsibilities/) - *daniel.vaskevic123@gmail.com*
-
+This course organized by
+[Raimundas Banevicius](#).
