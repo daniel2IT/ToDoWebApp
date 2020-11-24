@@ -12,7 +12,7 @@
 <h2 align="center"> You already have to know: </h2>
 
 ```diff
-C# basics: variables, arithmetic operations,       ! C
+C# basics: variables, arithmetic operations,      ```diff ! C ```
 conditional statements, loops,                     ! O
 functions, Overloading, Arrays, List, Dictionary,  + D
 Enum, Struct.                                      + I
