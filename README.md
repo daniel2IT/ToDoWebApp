@@ -1,5 +1,5 @@
 # About
-**Here it is Season 2 of our inside academy "Coding Camp Online"!
+**Here it is Season 2 of our inside academy "Coding Camp Online"!**
 
 ![image](https://lh3.googleusercontent.com/HH_1Uj3FZGYihf7ANQJlMA_J97xWGCN0FJzNEryAwnLGWTMnIBVo6HLPrtzHxCXocMc0=s85)
 
