@@ -7,7 +7,7 @@ namespace ToDoWebApp.Models
 {
     public class Category
     {
-        int Id;
-        string Name;
+        int Id { get; set; }
+        string Name { get; set; }
     }
 }

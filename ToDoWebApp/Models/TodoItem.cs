@@ -8,11 +8,18 @@ namespace ToDoWebApp.Models
     public class TodoItem
     {
 
-        int Id;
-        string Name;
-        string Description;
+        int Id { get; set; }
+        string Name { get; set; }
+        string Description { get; set; }
 
-        int[] priority = new int[5] { 1, 2, 3, 4, 5 };
+        private int[] totalPriority;
+
+        public int[] priority {
+                                get { return totalPriority; }
+                                set{
+                                        totalPriority = new int[5] { 1, 2, 3, 4, 5 };
+                                   }
+                               }
 
     }
 }
