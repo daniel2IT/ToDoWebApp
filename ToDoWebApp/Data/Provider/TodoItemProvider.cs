@@ -9,8 +9,6 @@ namespace ToDoWebApp.DataProviders
 {
     public class TodoItemProvider : ITodoItemRepository
     {
-        
-        /*List STatic*/
         public IEnumerable<TodoItem> todoItems
         {
             get

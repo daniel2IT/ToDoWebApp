@@ -27,6 +27,7 @@ namespace ToDoWebApp
         {
             /* AddTransient leidzia susieti tam tikra interfeisa ir klase kuri realizuoja ji */
             services.AddTransient<ITodoItemRepository, TodoItemProvider>();
+            services.AddTransient<ICategoryRepository, CategoryProvider>();
 
             services.AddControllersWithViews();
 
