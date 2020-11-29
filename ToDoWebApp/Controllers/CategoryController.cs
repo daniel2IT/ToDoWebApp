@@ -11,15 +11,14 @@ namespace ToDoWebApp.Controllers
     {
 
         public static List<Category> asList;
-        public static bool pereita;
+        public static bool Passed;
 
         public CategoryController(ICategoryRepository IcategoryRepository)
         {
-            if (pereita.Equals(false))
+            if (!Passed)
             {
                 asList = IcategoryRepository.categories.ToList();
-                pereita = true;
-
+                Passed = true;
             }
         }
 

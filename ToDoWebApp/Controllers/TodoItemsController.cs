@@ -9,13 +9,13 @@ namespace ToDoWebApp.Controllers
     public class TodoItemsController : Controller
     {
         public static List<TodoItem> asList;
-        public static bool pereita;
+        public static bool Passed;
 
         public TodoItemsController(ITodoItemRepository todoItemRepository)
         {
-            if (pereita.Equals(false)) { 
+            if (!Passed) { 
                asList = todoItemRepository.todoItems.ToList();
-                pereita = true;
+                Passed = true;
                 
             }
         }
