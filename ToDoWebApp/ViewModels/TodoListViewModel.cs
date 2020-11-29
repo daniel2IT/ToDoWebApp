@@ -6,6 +6,10 @@ namespace ToDoWebApp.ViewModels
     /* Deka jam mes galime, saugoti keleta/viena objektu/a ir perduoti i HTML sablona */
     public class TodoListViewModel
     {
-        public IEnumerable<TodoItem> todoItems { get; set; }
+        public IEnumerable<TodoItem> todoItems
+        {
+            get;
+            set;
+        }
     }
 }

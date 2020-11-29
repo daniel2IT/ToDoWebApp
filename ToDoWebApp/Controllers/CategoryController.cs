@@ -22,8 +22,6 @@ namespace ToDoWebApp.Controllers
             }
         }
 
-
-
         // GET: CategoryController
         public ActionResult Index()
         {
@@ -39,7 +37,10 @@ namespace ToDoWebApp.Controllers
         // GET: CategoryController/Create
         public ActionResult Create()
         {
-            return View(new Category { Name = "Type Here" });
+            return View(new Category
+            {
+                Name = "Type Here"
+            });
         }
 
         // POST: CategoryController/Create

@@ -11,22 +11,25 @@ namespace ToDoWebApp.Controllers
     [ApiController]
     public class TodoAPIController : ControllerBase
     {
-     /*   public static List<Category> asList;
-        public static bool Passed;*/
+        /*   public static List<Category> asList;
+            public static bool Passed;*/
 
         public TodoAPIController(ITodoItemAPIRepository todoItems)
         {
             TodoItems = todoItems;
         }
-        public ITodoItemAPIRepository TodoItems { get; set; }
-
+        public ITodoItemAPIRepository TodoItems
+        {
+            get;
+            set;
+        }
 
         public IEnumerable<TodoItem> GetAll()
         {
             return TodoItems.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetTodo")] /*Req Just By Name */
+        [HttpGet("{id}", Name = "GetTodo")]
         public IActionResult GetById(string id)
         {
             var item = TodoItems.Find(id);
@@ -38,21 +41,25 @@ namespace ToDoWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] TodoItem item) /* The [FromBody] attribute tells MVC to get 
-                                                               * the value of the to-do item from the body 
-                                                               * of the HTTP request.
-                                                               * Req Just By Name */
+        public IActionResult Create([FromBody] TodoItem item)
+        /* The [FromBody] attribute tells MVC to get 
+                                                                   * the value of the to-do item from the body 
+                                                                   * of the HTTP request.
+                                                                   * Req Just By Name */
         {
             if (item == null)
             {
                 return BadRequest();
             }
             TodoItems.Add(item);
-            return CreatedAtRoute("GetTodo", new { id = item.TodoItemId }, item);
+            return CreatedAtRoute("GetTodo", new
+            {
+                id = item.TodoItemId
+            },
+            item);
         }
 
-
-        [HttpPut("{id}")] /*Req Just By Name */
+        [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody] TodoItem item)
         {
             if (item == null)
@@ -70,8 +77,7 @@ namespace ToDoWebApp.Controllers
             return new NoContentResult();
         }
 
-
-        [HttpDelete("{id}")] /*Req Just By Name */
+        [HttpDelete("{id}")]
         public void Delete(string id)
         {
             TodoItems.Remove(id);

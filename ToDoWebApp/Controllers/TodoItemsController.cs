@@ -13,18 +13,18 @@ namespace ToDoWebApp.Controllers
 
         public TodoItemsController(ITodoItemRepository todoItemRepository)
         {
-            if (!Passed) { 
-               asList = todoItemRepository.todoItems.ToList();
+            if (!Passed)
+            {
+                asList = todoItemRepository.todoItems.ToList();
                 Passed = true;
-                
+
             }
         }
-    
 
         // GET: TodoItemsController
         public ActionResult Index()
         {
-            return View(asList); 
+            return View(asList);
         }
 
         // GET: TodoItemsController/Details/5
@@ -36,7 +36,10 @@ namespace ToDoWebApp.Controllers
         // GET: TodoItemsController/Create
         public ActionResult Create()
         {
-            return View( new TodoItem { Name = "Type Here" });
+            return View(new TodoItem
+            {
+                Name = "Type Here"
+            });
         }
 
         // POST: TodoItemsController/Create
@@ -70,7 +73,8 @@ namespace ToDoWebApp.Controllers
 
             try
             {
-                foreach(var s in asList){
+                foreach (var s in asList)
+                {
 
                     if (s.TodoItemId.Equals(id))
                     {
