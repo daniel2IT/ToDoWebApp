@@ -11,7 +11,10 @@ namespace ToDoWebApp.Controllers
     [ApiController]
     public class TodoAPIController : ControllerBase
     {
-        public TodoAPIController(TodoAPIRepository todoItems)
+     /*   public static List<Category> asList;
+        public static bool Passed;*/
+
+        public TodoAPIController(ITodoItemAPIRepository todoItems)
         {
             TodoItems = todoItems;
         }
