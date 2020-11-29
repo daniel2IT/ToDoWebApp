@@ -1,5 +1,3 @@
-using System;
-
 namespace ToDoWebApp.Models
 {
     public class ErrorViewModel

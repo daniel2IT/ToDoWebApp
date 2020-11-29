@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
-using ToDoWebApp.ViewModels;
 
 namespace ToDoWebApp.Controllers
 {
