@@ -6,7 +6,7 @@ namespace ToDoWebApp.Models
     public class TodoItem
     {
 
-         [ScaffoldColumn(false)] /* for Details is can be True*/
+      /*   [ScaffoldColumn(false)] *//* for Details is can be True*/
         public int TodoItemId { get; set; } /**/
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Prasome Ivesti Varda"), MaxLength(30)]

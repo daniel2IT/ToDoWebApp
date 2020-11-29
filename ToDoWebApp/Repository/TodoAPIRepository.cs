@@ -21,7 +21,7 @@ namespace ToDoWebApp.Repository
         public void Add(TodoItem item)
         {
             item.TodoItemId = Guid.NewGuid().GetHashCode(); ; /* ID */
-            _todos[item.Name] = item;
+            _todos[item.TodoItemId.ToString()] = item;
         }
 
         public TodoItem Find(string key)
@@ -43,7 +43,7 @@ namespace ToDoWebApp.Repository
 
         public void Update(TodoItem item)
         {
-            _todos[item.Name] = item;
+            _todos[item.TodoItemId.ToString()] = item;
         }
     }
 }
