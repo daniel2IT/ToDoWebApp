@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.DataProviders;
+using ToDoWebApp.Repository;
 
 namespace ToDoWebApp
 {
@@ -30,16 +31,15 @@ namespace ToDoWebApp
             /* AddTransient/AddSingleton leidzia susieti tam tikra interfeisa ir klase kuri realizuoja ji */
             services.AddSingleton<ITodoItemRepository, TodoItemProvider>(); /*AddTransient*/
             services.AddSingleton<ICategoryRepository, CategoryProvider>();
+            // Add our repository type
+            services.AddSingleton<ITodoItemAPIRepository, TodoAPIRepository>();
             /* Transient services: The object of these services are created newly every time a controller or service class is called or executed. ...
             Singleton service: The object of this service are created once initially and does not change for any no of requests, regardless of 
             whether an instance is provided in ConfigureServices. */
 
-         /*   services.AddDbContext<TodoContext>(options => options.UseInMemoryDatabase("RazorPagesApp"));*/
+       
 
-            services.AddDbContext<TodoContext>(opt =>
-                                           opt.UseInMemoryDatabase("TodoList"));
-
-            services.AddScoped<TodoContext>();
+            services.AddScoped<TodoAPIRepository>();
 
             services.AddControllersWithViews();
 

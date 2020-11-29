@@ -11,7 +11,7 @@ namespace ToDoWebApp.Models
     {
 
          [ScaffoldColumn(false)] /* for Details is can be True*/
-        public int TodoItemId { get; set; }/**/
+        public int TodoItemId { get; set; } /**/
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Prasome Ivesti Varda"), MaxLength(30)]
         public string Name { get; set; }/**/
