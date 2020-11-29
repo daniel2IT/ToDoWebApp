@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,9 +27,19 @@ namespace ToDoWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /* AddTransient leidzia susieti tam tikra interfeisa ir klase kuri realizuoja ji */
-            services.AddTransient<ITodoItemRepository, TodoItemProvider>();
-            services.AddTransient<ICategoryRepository, CategoryProvider>();
+            /* AddTransient/AddSingleton leidzia susieti tam tikra interfeisa ir klase kuri realizuoja ji */
+            services.AddSingleton<ITodoItemRepository, TodoItemProvider>(); /*AddTransient*/
+            services.AddSingleton<ICategoryRepository, CategoryProvider>();
+            /* Transient services: The object of these services are created newly every time a controller or service class is called or executed. ...
+            Singleton service: The object of this service are created once initially and does not change for any no of requests, regardless of 
+            whether an instance is provided in ConfigureServices. */
+
+         /*   services.AddDbContext<TodoContext>(options => options.UseInMemoryDatabase("RazorPagesApp"));*/
+
+            services.AddDbContext<TodoContext>(opt =>
+                                           opt.UseInMemoryDatabase("TodoList"));
+
+            services.AddScoped<TodoContext>();
 
             services.AddControllersWithViews();
 
