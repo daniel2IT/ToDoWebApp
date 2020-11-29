@@ -26,7 +26,7 @@ namespace ToDoWebApp.Controllers
             return TodoItems.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetTodo")]
+        [HttpGet("{id}", Name = "GetTodo")] /*Req Just By Name */
         public IActionResult GetById(string id)
         {
             var item = TodoItems.Find(id);
@@ -40,7 +40,8 @@ namespace ToDoWebApp.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] TodoItem item) /* The [FromBody] attribute tells MVC to get 
                                                                * the value of the to-do item from the body 
-                                                               * of the HTTP request.*/
+                                                               * of the HTTP request.
+                                                               * Req Just By Name */
         {
             if (item == null)
             {
@@ -51,10 +52,10 @@ namespace ToDoWebApp.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}")] /*Req Just By Name */
         public IActionResult Update(string id, [FromBody] TodoItem item)
         {
-            if (item == null || Convert.ToString(item.TodoItemId) != id)
+            if (item == null)
             {
                 return BadRequest();
             }
@@ -69,7 +70,8 @@ namespace ToDoWebApp.Controllers
             return new NoContentResult();
         }
 
-        [HttpDelete("{id}")]
+
+        [HttpDelete("{id}")] /*Req Just By Name */
         public void Delete(string id)
         {
             TodoItems.Remove(id);

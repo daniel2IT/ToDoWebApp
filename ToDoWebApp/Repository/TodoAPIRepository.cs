@@ -44,8 +44,6 @@ namespace ToDoWebApp.Repository
         public void Update(TodoItem item)
         {
             _todos[item.Name] = item;
-            _todos[item.Description] = item;
-            _todos[item.priority.ToString()] = item;
         }
     }
 }
