@@ -2,7 +2,7 @@
 <h2 align="center">Season 2 of academy "Coding Camp Online"</h2>
 
 <p align="center">
-    <img width="260" height="200" src="https://venngage.net/ps/0PfwUtFYDWg/coding-camp-online-net-course">
+    <a data-flickr-embed="true" href="https://www.flickr.com/photos/191222027@N05" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" width="1024" height="768" alt=""></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 </p>
 
 ### We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs
