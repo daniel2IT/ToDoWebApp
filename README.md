@@ -2,12 +2,9 @@
 <h2 align="center">Season 2 of academy "Coding Camp Online"</h2>
 
 <p align="center">
-    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" width="768" height="400" alt=""></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" width="841" height="594" alt=""></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 </p>
 
-    <a data-flickr-embed="true" href="https://www.flickr.com/photos/191222027@N05" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" width="768" height="400" alt=""></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-    
-    
 ### We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs
 
 ### FREE .NET course every Tuesday starting 17th of November at 6 pm.
