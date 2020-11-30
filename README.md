@@ -2,7 +2,7 @@
 <h2 align="center">Season 2 of academy "Coding Camp Online"</h2>
 
 <p align="center">
-    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" width="860" height="470" alt=""></a>
+    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" height="960" width="640" alt=""></a>
 </p>
 
 ### We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs
