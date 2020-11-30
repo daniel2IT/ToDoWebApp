@@ -8,7 +8,7 @@ namespace ToDoWebApp.Repository
 {
     public class TodoAPIRepository : ITodoItemAPIRepository
     {
-
+        public static int counter;
         private static ConcurrentDictionary<string,
         TodoItem> _todos = new ConcurrentDictionary<string,
         TodoItem>();
@@ -31,8 +31,10 @@ namespace ToDoWebApp.Repository
 
         public void Add(TodoItem item)
         {
-            item.TodoItemId = Guid.NewGuid().GetHashCode(); ;
+            counter++;
+            /*item.TodoItemId = Guid.NewGuid().GetHashCode(); - bad choice, chance for repeat...*/
             /* ID */
+            item.TodoItemId = counter;
             _todos[item.TodoItemId.ToString()] = item;
         }
 
