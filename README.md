@@ -2,7 +2,7 @@
 <h2 align="center">Season 2 of academy "Coding Camp Online"</h2>
 
 <p align="center">
-    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" height="860" width="600" alt=""></a>
+    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" height="760" width="600" alt=""></a>
 </p>
 
 ### .NET course Where:
