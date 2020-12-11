@@ -13,6 +13,11 @@ namespace ToDoWebApp.Data
         public ToDoContext(DbContextOptions<ToDoContext> options) : base(options)
         {
         }
+        
+/*        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }*/
+
 
         /* Lentele ..*/
         public DbSet<Category> Categories { get; set; }

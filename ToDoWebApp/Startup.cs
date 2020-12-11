@@ -13,9 +13,11 @@ namespace ToDoWebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IConfigurationRoot _confSting;
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnv)
         {
             Configuration = configuration;
+            _confSting = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
 
         public IConfiguration Configuration
@@ -43,9 +45,13 @@ namespace ToDoWebApp
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<ToDoContext>(optionsAction: options =>
-                    options.UseSqlServer(Configuration.GetConnectionString(name:"ToDoWebAppDb"))
-             );
+            /*            services.AddDbContext<ToDoContext>(optionsAction: options =>
+                                options.UseSqlServer(Configuration.GetConnectionString(name:"ToDoWebAppDb"))
+                         );*/
+
+            services.AddDbContext<ToDoContext>(options => options.UseSqlServer(_confSting.GetConnectionString("ToDoWebAppDb")));
+
+
 
         }
 
@@ -62,6 +68,8 @@ namespace ToDoWebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

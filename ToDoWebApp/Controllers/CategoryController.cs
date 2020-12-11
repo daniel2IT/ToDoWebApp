@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using ToDoWebApp.Data;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
 
@@ -9,33 +12,35 @@ namespace ToDoWebApp.Controllers
 {
     public class CategoryController : Controller
     {
+        private readonly ToDoContext context;
+/*        public static List<Category> asList;
+        public static bool Passed;*/
 
-        public static List<Category> asList;
-        public static bool Passed;
-
-        public CategoryController(ICategoryRepository IcategoryRepository)
+        public CategoryController(ICategoryRepository IcategoryRepository,
+                                   ToDoContext context)
         {
-            if (!Passed)
-            {
-                asList = IcategoryRepository.categories.ToList();
-                Passed = true;
-            }
+      
+              /*  asList = IcategoryRepository.categories.ToList(); - Static data for API */
+                this.context = context;
+              /*  asList = context.Categories.ToList();*/
         }
 
         // GET: CategoryController
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(asList);
+            /* var myCategories = context.Categories.ToList();*/
+
+            return View(await context.Categories.ToListAsync());
         }
 
         // GET: CategoryController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View(model: asList.FirstOrDefault(predicate: s => s.CategoryId == id));
+            return View(await context.Categories.FindAsync(id));
         }
 
         // GET: CategoryController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             return View(new Category
             {
@@ -46,55 +51,70 @@ namespace ToDoWebApp.Controllers
         // POST: CategoryController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category category)
+        public async Task<ActionResult> Create(Category category)
         {
             try
             {
-                // duodame prieiga prie duom
-                asList.Add(category);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    context.Add(category);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            catch
+            catch (DbUpdateException /* ex */)
             {
-                return View(category);
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
             }
+            return View(category);
         }
 
         // GET: CategoryController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            /*return View();*/
+            return View(await context.Categories.FindAsync(id));
+          /*  return View(context.Categories.FirstOrDefault(s => s.CategoryId == id));*/
         }
 
-        // POST: CategoryController/Edit/5
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Category category)
+        public async Task<IActionResult> EditPost(int? id)
         {
-            try
+            if (id == null)
             {
-                foreach (var s in asList)
+                return NotFound();
+            }
+            var studentToUpdate = await context.Categories.FirstOrDefaultAsync(s => s.CategoryId == id);
+            if (await TryUpdateModelAsync<Category>(
+                studentToUpdate,
+                "",
+                s => s.Name))
+            {
+                try
                 {
-
-                    if (s.CategoryId.Equals(id))
-                    {
-                        s.Name = category.Name;
-                        break;
-                    }
+                    await context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
             }
-            catch
-            {
-                return View(category);
-            }
+            return View(studentToUpdate);
         }
+
 
         // GET: CategoryController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View(model: asList.FirstOrDefault(predicate: s => s.CategoryId == id));
+            return View(await context.Categories.FindAsync(id));
         }
 
         // POST: CategoryController/Delete/5
@@ -104,13 +124,16 @@ namespace ToDoWebApp.Controllers
         {
             try
             {
-                asList.RemoveAll(x => x.CategoryId == id);
+                Category categoryToDelete = new Category() { CategoryId = id };
+                context.Entry(categoryToDelete).State = EntityState.Deleted;
 
-                return RedirectToAction(nameof(Index));
+                context.SaveChangesAsync();
+                  return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (DbUpdateException /* ex */)
             {
-                return View();
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
             }
         }
     }
