@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ToDoWebApp.Data;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.DataProviders;
 using ToDoWebApp.Repository;
@@ -40,6 +42,10 @@ namespace ToDoWebApp
             services.AddScoped<TodoAPIRepository>();
 
             services.AddControllersWithViews();
+
+            services.AddDbContext<ToDoContext>(optionsAction: options =>
+                    options.UseSqlServer(Configuration.GetConnectionString(name:"ToDoWebAppDb"))
+             );
 
         }
 
