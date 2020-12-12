@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ToDoWebApp.Models
@@ -28,8 +29,28 @@ namespace ToDoWebApp.Models
             get;
             set;
         }
-        /**/
 
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Create Date")]
+        public DateTime CreatedDate { get; set; }
+/*        public DateTime ModifiedDate { get; set; }*/
+
+        public TodoItem()
+        {
+            this.CreatedDate = DateTime.UtcNow;
+        /*    this.ModifiedDate = DateTime.UtcNow;*/
+        }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime DeadLineDate
+        {
+            get;
+            set;
+        }
+
+        /**/
+        [DefaultValue(3)]
         [Required(ErrorMessage = "Pasirinkite Nuo 1 iki 5 ")]
         [Range(1.00, 5.00, ErrorMessage = "Priority turi buti tarp 1 and 5")]
         /* Not Working, but i will just create Validation in CreateView... */
@@ -38,13 +59,35 @@ namespace ToDoWebApp.Models
             get;
             set;
         }
-        /**/
+
+ 
+
+        public Status status { get; set; }
 
         public override string ToString()
         {
-            return $"TodoItem(Id:{TodoItemId},Name:{Name},Description:{Description},totalPriority:{priority})";
-            /**/
+            return $"TodoItem(Id:{TodoItemId},Name:{Name},Description:{Description}, CreatedDate:{CreatedDate},DeadLineDate:{DeadLineDate},totalPriority:{priority}, Status:{status})";
         }
+        /*
+        Id
+        Name[no null]
+        Description[null]
+        CreationDate[no null]
+        DeadLineDate[null]
+        Priority(int 1-5)[no null] Default = 3, 1 = highest priority.
+        Status enum (Backlog, Wip, Done, Archived) Default = Backlog*/
+    }
 
+    [DefaultValue(Backlog)]
+    public enum Status
+    {
+        [Display(Name = "Backlog")]
+        Backlog, //default value 
+        [Display(Name = "Wip")]
+        Wip,
+        [Display(Name = "Done")]
+        Done,
+        [Display(Name = "Archived")]
+        Archived
     }
 }

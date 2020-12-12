@@ -23,8 +23,14 @@ namespace ToDoWebApp.Data
 
         /* Lentele ..*/
         public DbSet<Category> Categories { get; set; }
+        
+/*        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }*/
 
 
+        /* Lentele ..*/
+        public DbSet<TodoItem> TodoItem { get; set; }
 
     }
 }
