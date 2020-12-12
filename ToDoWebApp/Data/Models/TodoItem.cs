@@ -23,7 +23,6 @@ namespace ToDoWebApp.Models
         }
         /**/
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "Prasome Ivesti Aprasa"), MaxLength(30)]
         public string Description
         {
             get;
