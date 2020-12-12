@@ -242,7 +242,7 @@ namespace ToDoWebApp.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DeadLineDate")
+                    b.Property<DateTime?>("DeadLineDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")

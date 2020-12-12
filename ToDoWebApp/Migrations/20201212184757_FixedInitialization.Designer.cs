@@ -10,8 +10,8 @@ using ToDoWebApp.Data;
 namespace ToDoWebApp.Migrations
 {
     [DbContext(typeof(ToDoContext))]
-    [Migration("20201212163218_InitializedWithToDoItemsAdmin")]
-    partial class InitializedWithToDoItemsAdmin
+    [Migration("20201212184757_FixedInitialization")]
+    partial class FixedInitialization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -244,7 +244,7 @@ namespace ToDoWebApp.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DeadLineDate")
+                    b.Property<DateTime?>("DeadLineDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")

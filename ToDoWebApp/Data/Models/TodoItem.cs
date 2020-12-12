@@ -42,8 +42,10 @@ namespace ToDoWebApp.Models
         /*    this.ModifiedDate = DateTime.UtcNow;*/
         }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DeadLineDate
+
+        [DataType(DataType.Date)]
+        [Display(Name = "DeadLine Date")]
+        public DateTime? DeadLineDate /* ? - make field nullable */
         {
             get;
             set;

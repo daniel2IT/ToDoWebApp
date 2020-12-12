@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToDoWebApp.Migrations
 {
-    public partial class InitializedWithToDoItemsAdmin : Migration
+    public partial class FixedInitialization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,19 @@ namespace ToDoWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TodoItem",
                 columns: table => new
                 {
@@ -55,7 +68,7 @@ namespace ToDoWebApp.Migrations
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeadLineDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeadLineDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     priority = table.Column<int>(type: "int", nullable: false),
                     status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -226,6 +239,9 @@ namespace ToDoWebApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "TodoItem");
