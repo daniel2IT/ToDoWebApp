@@ -1,4 +1,5 @@
-﻿using ToDoWebApp.Models;
+﻿using System.Linq;
+using ToDoWebApp.Models;
 
 namespace ToDoWebApp.Data
 {
@@ -20,7 +21,14 @@ namespace ToDoWebApp.Data
           };
             foreach (Category c in courses)
             {
-                context.Categories.Add(c);
+
+                if (context.Categories.Any(x => x.Name == c.Name))
+                {
+                }
+                else
+                {
+                    context.Categories.Add(c);
+                }
             }
             context.SaveChanges();
         }
