@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
-using ToDoWebApp.Repository;
 
 namespace ToDoWebApp.Controllers
 {
