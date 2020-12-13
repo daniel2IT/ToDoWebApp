@@ -19,7 +19,6 @@ namespace ToDoWebApp.Controllers
         public CategoryController(ICategoryRepository IcategoryRepository,
                                    ToDoContext context)
         {
-      
               /*  asList = IcategoryRepository.categories.ToList(); - Static data for API */
                 this.context = context;
               /*  asList = context.Categories.ToList();*/

@@ -10,23 +10,22 @@ using ToDoWebApp.Models;
 
 namespace ToDoWebApp.Controllers.Admin
 {
-    public class TodoItemsAdminController : Controller
+    public class CategoriesOneToManyAdminController : Controller
     {
         private readonly ToDoContext _context;
 
-        public TodoItemsAdminController(ToDoContext context)
+        public CategoriesOneToManyAdminController(ToDoContext context)
         {
             _context = context;
         }
 
-        // GET: TodoItemsOneToManyAdmin
+        // GET: CategoriesOneToManyAdmin
         public async Task<IActionResult> Index()
         {
-            var toDoContext = _context.TodoItem.Include(t => t.Category);
-            return View(await toDoContext.ToListAsync());
+            return View(await _context.Categories.ToListAsync());
         }
 
-        // GET: TodoItemsOneToManyAdmin/Details/5
+        // GET: CategoriesOneToManyAdmin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace ToDoWebApp.Controllers.Admin
                 return NotFound();
             }
 
-            var todoItem = await _context.TodoItem
-                .Include(t => t.Category)
-                .FirstOrDefaultAsync(m => m.TodoItemId == id);
-            if (todoItem == null)
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(todoItem);
+            return View(category);
         }
 
-        // GET: TodoItemsOneToManyAdmin/Create
+        // GET: CategoriesOneToManyAdmin/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
             return View();
         }
 
-        // POST: TodoItemsOneToManyAdmin/Create
+        // POST: CategoriesOneToManyAdmin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TodoItemId,Name,Description,CreatedDate,DeadLineDate,priority,status,CategoryId")] TodoItem todoItem)
+        public async Task<IActionResult> Create([Bind("CategoryId,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(todoItem);
+                _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", todoItem.CategoryId);
-            return View(todoItem);
+            return View(category);
         }
 
-        // GET: TodoItemsOneToManyAdmin/Edit/5
+        // GET: CategoriesOneToManyAdmin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace ToDoWebApp.Controllers.Admin
                 return NotFound();
             }
 
-            var todoItem = await _context.TodoItem.FindAsync(id);
-            if (todoItem == null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", todoItem.CategoryId);
-            return View(todoItem);
+            return View(category);
         }
 
-        // POST: TodoItemsOneToManyAdmin/Edit/5
+        // POST: CategoriesOneToManyAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TodoItemId,Name,Description,CreatedDate,DeadLineDate,priority,status,CategoryId")] TodoItem todoItem)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Name")] Category category)
         {
-            if (id != todoItem.TodoItemId)
+            if (id != category.CategoryId)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace ToDoWebApp.Controllers.Admin
             {
                 try
                 {
-                    _context.Update(todoItem);
+                    _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TodoItemExists(todoItem.TodoItemId))
+                    if (!CategoryExists(category.CategoryId))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace ToDoWebApp.Controllers.Admin
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", todoItem.CategoryId);
-            return View(todoItem);
+            return View(category);
         }
 
-        // GET: TodoItemsOneToManyAdmin/Delete/5
+        // GET: CategoriesOneToManyAdmin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,31 +124,30 @@ namespace ToDoWebApp.Controllers.Admin
                 return NotFound();
             }
 
-            var todoItem = await _context.TodoItem
-                .Include(t => t.Category)
-                .FirstOrDefaultAsync(m => m.TodoItemId == id);
-            if (todoItem == null)
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(todoItem);
+            return View(category);
         }
 
-        // POST: TodoItemsOneToManyAdmin/Delete/5
+        // POST: CategoriesOneToManyAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var todoItem = await _context.TodoItem.FindAsync(id);
-            _context.TodoItem.Remove(todoItem);
+            var category = await _context.Categories.FindAsync(id);
+            _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TodoItemExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.TodoItem.Any(e => e.TodoItemId == id);
+            return _context.Categories.Any(e => e.CategoryId == id);
         }
     }
 }

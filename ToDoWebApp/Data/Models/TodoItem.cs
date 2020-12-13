@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToDoWebApp.Models
 {
@@ -9,6 +10,7 @@ namespace ToDoWebApp.Models
 
         /*   [ScaffoldColumn(false)] */
         /* for Details is can be True*/
+        [Key]
         public int TodoItemId
         {
             get;
@@ -24,7 +26,7 @@ namespace ToDoWebApp.Models
         }
         /**/
         [DataType(DataType.Text)]
-        public string Description
+        public string? Description
         {
             get;
             set;
@@ -66,18 +68,21 @@ namespace ToDoWebApp.Models
 
         public Status status { get; set; }
 
+        /* Foreign key */
+        public int CategoryId{
+            get;
+            set;
+        }
+        /* Fully defined relationships One - To - Many */
+        public virtual Category Category { 
+            get;
+            set;
+        }
+
         public override string ToString()
         {
-            return $"TodoItem(Id:{TodoItemId},Name:{Name},Description:{Description}, CreatedDate:{CreatedDate},DeadLineDate:{DeadLineDate},totalPriority:{priority}, Status:{status})";
+            return $"TodoItem(Id:{TodoItemId},Name:{Name},Description:{Description}, CreatedDate:{CreatedDate},DeadLineDate:{DeadLineDate},totalPriority:{priority}, Status:{status}, CategoryName:{Category.Name})";
         }
-        /*
-        Id
-        Name[no null]
-        Description[null]
-        CreationDate[no null]
-        DeadLineDate[null]
-        Priority(int 1-5)[no null] Default = 3, 1 = highest priority.
-        Status enum (Backlog, Wip, Done, Archived) Default = Backlog*/
     }
 
     [DefaultValue(Backlog)]
@@ -91,5 +96,6 @@ namespace ToDoWebApp.Models
         Done,
         [Display(Name = "Archived")]
         Archived
+    
     }
 }

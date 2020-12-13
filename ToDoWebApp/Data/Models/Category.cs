@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ToDoWebApp.Models
 {
     public class Category
     {
-        [ScaffoldColumn(false)]
+        [Key]
         /* for Details is can be True*/
         public int CategoryId
         {
@@ -20,5 +21,9 @@ namespace ToDoWebApp.Models
             set;
         }
         /**/
+
+        /* one to many tarp Category ir CategoryId*/
+        public virtual ICollection<TodoItem> TodoItems { get; set; }
+
     }
 }
