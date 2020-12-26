@@ -13,8 +13,10 @@ namespace ToDoWebApp.Repository
         TodoItem> _todos = new ConcurrentDictionary<string,
         TodoItem>();
 
+        public List<TodoItem> todoItem { get; set; } 
+        
         public TodoAPIRepository()
-        {
+        {           
             Add(new TodoItem
             {
                 Name = "Item1",
@@ -27,6 +29,7 @@ namespace ToDoWebApp.Repository
                 Description = "Description2",
                 priority = 3
             });
+       
         }
 
         public void Add(TodoItem item)
@@ -36,6 +39,7 @@ namespace ToDoWebApp.Repository
             /* ID */
             item.TodoItemId = counter;
             _todos[item.TodoItemId.ToString()] = item;
+            
         }
 
         public TodoItem Find(string key)
@@ -60,5 +64,7 @@ namespace ToDoWebApp.Repository
         {
             _todos[item.TodoItemId.ToString()] = item;
         }
+
+    
     }
 }

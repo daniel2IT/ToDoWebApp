@@ -22,6 +22,7 @@ namespace ToDoWebApp.Controllers
             set;
         }
 
+        /* https://localhost:44300/api/TodoAPI/ */
         public IEnumerable<TodoItem> GetAll()
         {
             return TodoItems.GetAll();
