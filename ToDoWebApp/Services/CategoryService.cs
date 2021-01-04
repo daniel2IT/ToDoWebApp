@@ -17,27 +17,29 @@ namespace ToDoWebApp.Services
 
         public void AddCategory(Category category)
         {
-            var categoryFind = context.Categories.FirstOrDefault(s => s.Name == category.Name);
+           var categoryFind = context.Categories.FirstOrDefault(s => s.Name == category.Name);
            if(categoryFind == null)
             {
                 throw new ArgumentException("bad category");
             }
-            
-            /* context.Add(category);
-            context.SaveChangesAsync();*/
         }
 
-        public TodoItem Find(string key)
+        public Category Find(string key)
         {
-            throw new NotImplementedException();
+            var categoryFind = context.Categories.FirstOrDefault(s => s.Name == key);
+            if (categoryFind == null)
+            {
+                throw new ArgumentException("bad category");
+            }
+            return null;
         }
 
         public IEnumerable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Categories;
         }
 
-        public TodoItem Remove(string key)
+        public Category Remove(string key)
         {
             throw new NotImplementedException();
         }

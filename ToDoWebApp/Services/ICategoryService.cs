@@ -10,9 +10,6 @@ namespace ToDoWebApp.Services
     {
         void AddCategory(Category category);
         IEnumerable<Category> GetAll();
-        TodoItem Find(string key);
-        TodoItem Remove(string key);
-        string Update(Category category);
-
+        Category Find(string key);
     }
 }

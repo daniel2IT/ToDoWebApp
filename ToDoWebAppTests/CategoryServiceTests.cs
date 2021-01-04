@@ -22,7 +22,8 @@ namespace ToDoWebAppTests
       
            var categories = new List<Category>
             {
-                new Category{CategoryId = 1 ,Name = "KategorijaForTest"}
+                new Category{CategoryId = 1 ,Name = "KategorijaForTest"},
+                new Category{CategoryId = 2 ,Name = "Kategorija1"}
             }.AsQueryable();
 
             var mockSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<Category>>();
@@ -48,11 +49,66 @@ namespace ToDoWebAppTests
                 Name = "KategorijaForTest"
             });
 
-            // Assert 
             var mark = contextMock.Object.Categories.FirstOrDefault(m => m.Name == "KategorijaForTest");
 
             //Assert
             Assert.NotNull(mark);
+        }
+
+        [Fact]
+        public void FindCategory_passValidData_Ok()
+        {
+            // Arange ()
+            Category goodAct;
+
+            //Act
+            goodAct = service.Find("Kategorija1");
+            var mark = contextMock.Object.Categories.FirstOrDefault(m => m.Name == "Kategorija1");
+
+            //Assert
+            Assert.NotNull(mark);
+            Assert.Null(goodAct);
+        }
+
+        [Fact]
+        public void GetAll_passValidData_Ok()
+        {
+            // Arange ()
+            IEnumerable<Category> goodCategories;
+
+            //Act
+            goodCategories = service.GetAll();
+
+            //Assert
+            Assert.NotNull(goodCategories);
+        }
+
+        /********************************/
+        /*Against(PassUnValidData) TEST*/
+        /******************************/
+        [Fact]
+        public void AddCategory_PassUnValidData_Ok()
+        {
+            //Act
+            var mark = contextMock.Object.Categories.FirstOrDefault(m => m.Name == "KategorijaForTestKategorijaForTestKategorijaForTestKategorijaForTestKategorijaForTest");
+
+            //Assert
+            Assert.Null(mark);
+            Assert.Throws<ArgumentException>(() => service.AddCategory(new Category
+            {
+                Name = "KategorijaForTestKategorijaForTestKategorijaForTestKategorijaForTestKategorijaForTest"
+            }));
+        }
+
+        [Fact]
+        public void FindCategory_PassUnValidData_Ok()
+        {
+            //Act
+            var mark = contextMock.Object.Categories.FirstOrDefault(m => m.Name == "Kategorija1");
+
+            //Assert
+            Assert.NotNull(mark);
+            Assert.Throws<ArgumentException>(() => service.Find("Kategorija2323232"));
         }
     }
 }
