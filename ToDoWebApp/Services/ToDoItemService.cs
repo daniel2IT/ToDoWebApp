@@ -17,10 +17,14 @@ namespace ToDoWebApp.Services
 
         public string Add(TodoItem item)
         {
+            DateTime dt;
+            dt =  DateTime.Now;
+
             if (item == null)
             {
                 return "False";
             }
+
 
 
             // Create a list of Items to Check Name Exists or Not ...
@@ -38,8 +42,23 @@ namespace ToDoWebApp.Services
             if (item.priority >= 0 )
             {
                 if(item.priority <= 5)
-                {  
-                TodoItems.Add(item);
+                {
+
+                    if (item.DeadLineDate != null)
+                    {
+                        int result = DateTime.Compare(item.DeadLineDate.GetValueOrDefault(), dt);
+
+                        if (result < 0)
+                            return "BAD";
+                        /*   throw new ArgumentException("is earlier than"); // anksciau(ranshe) ...*/
+                        else if (result == 0)
+                            return "BAD";
+                        /* throw new ArgumentException("is the same time as");*/
+                        else
+                            throw new ArgumentException("DeadLine is later than TodayDate");
+                    }
+
+                    TodoItems.Add(item);
                     return "True";
                 }
             }

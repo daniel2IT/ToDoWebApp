@@ -45,6 +45,7 @@ namespace ToDoWebAppTests
                     Assert.Equal("True", eq);
         }
 
+        /* Can't create 2 TodoItems with same name (throw exception) */
         [Fact]
         public void AddAlreadyExistDataName_UnPassingAlreadyExistingData_Ok()
         {
@@ -115,6 +116,7 @@ namespace ToDoWebAppTests
             Assert.Equal( "ItemForUpdated", mark.Name);
         }
 
+        /* Can't edit 2 TodoItems with same name (throw exception) */
         [Fact]
         public void UpdateToAlreadyExistDataName_UnPassingAlreadyExistingData_Ok()
         {
@@ -125,7 +127,7 @@ namespace ToDoWebAppTests
 
             // Assert
             var mark = contextMock.Object.Find("2"); /* Id = 4 */
-            Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
+        Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
             Assert.Throws<ArgumentException>(() => service.Update(new TodoItem
             {
                 TodoItemId = 2,
@@ -148,6 +150,27 @@ namespace ToDoWebAppTests
             // Assert
             var mark = contextMock.Object.GetAll(); /* Id = 4 */
             Assert.NotNull(mark);
+        }
+
+        /* TodoItem DeadlineDate must be higher then CreationDate. (throw exception)*/
+        [Fact]
+        public void AddCorrectDate_PassGoodDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            var mark = contextMock.Object.Find("2"); /* Id = 4 */
+            Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam",
+                Description = "DescriptionPAM",
+                priority = 4,
+                DeadLineDate = new DateTime(2088, 3, 1, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            }));
         }
 
 
