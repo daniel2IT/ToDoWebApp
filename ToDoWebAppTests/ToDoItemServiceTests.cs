@@ -281,6 +281,24 @@ namespace ToDoWebAppTests
             }));
         }
 
+        /*then creating/editing TodoItems with priority 2, deadline must exist, and must be no less than 2 days in the future.*/
+        [Fact]
+        public void AddCorrectDatePriority2_PassGoodDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam",
+                Description = "DescriptionPAM",
+                priority = 2,
+                DeadLineDate = new DateTime(2088, 3, 9, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            }));
+        }
 
         /********************************/
         /*Against(PassUnValidData) TEST*/

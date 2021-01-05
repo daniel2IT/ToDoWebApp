@@ -63,17 +63,27 @@ namespace ToDoWebApp.Services
 
                                 }
                             }
+                        }
+                        if (item.priority == 2)
+                        {
+                            List<DateTime> allPriority2Dates = new List<DateTime>();
+                            foreach (var CurrentItems in TodoItems.GetAll())
+                            {
+                                if (CurrentItems.priority == 2)
+                                {
+                                    allPriority2Dates.Add(CurrentItems.DeadLineDate.Value);
+                                }
+                            }
 
-               /*             if (result < 0)
-                                return "BAD";
-                            *//*   throw new ArgumentException("is earlier than"); // anksciau(ranshe) ...*//*
-                            else if (result == 0)
-                                return "BAD";
-                            //* throw new ArgumentException("is the same time as");*//*
+                            int highestDay = Convert.ToInt32(allPriority2Dates.Max().Day);
+
+                            int resultPriorityDate1 = Convert.ToInt32(item.DeadLineDate.Value.Day) - highestDay;
+
+                            if (resultPriorityDate1 > 2) /* Like that .. Solo Test */
+                                throw new ArgumentException("new Created DeadLine is > 2 days than previous");
                             else
-                                throw new ArgumentException("DeadLine is later than TodayDate");
-                        */
-                        
+                                return "BAD";
+
                         }
 
                         int result = DateTime.Compare(item.DeadLineDate.GetValueOrDefault(), dt);

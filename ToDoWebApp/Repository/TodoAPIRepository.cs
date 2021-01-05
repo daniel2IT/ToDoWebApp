@@ -32,7 +32,8 @@ namespace ToDoWebApp.Repository
                 Name = "Item2",
                 Description = "Description2",
                 priority = 2,
-                status = Status.Wip
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 1, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
             Add(new TodoItem
             {
@@ -40,7 +41,8 @@ namespace ToDoWebApp.Repository
                 Name = "ItemForTestAlreadeCreated",
                 Description = "Description3",
                 priority = 2,
-                status = Status.Wip
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 3, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
             Add(new TodoItem
             {
@@ -48,7 +50,8 @@ namespace ToDoWebApp.Repository
                 Name = "ItemForTestAlreadeCreate3232d",
                 Description = "Description3",
                 priority = 2,
-                status = Status.Wip
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 5, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
         }
 
