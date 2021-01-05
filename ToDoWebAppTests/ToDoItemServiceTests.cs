@@ -172,7 +172,7 @@ namespace ToDoWebAppTests
             }));
         }
 
-        /* then creating/editing TodoItems, we can have only 1 Wip status item with priority 1. */
+        /* then creating TodoItems, we can have only 1 Wip status item with priority 1. */
         [Fact]
         public void AddCorrectWipStatusNumberPriority1_PassGoodStatus_Ok()
         {
@@ -190,7 +190,7 @@ namespace ToDoWebAppTests
             });
 
             // Assert
-            Assert.Equal("Wip Status With Priority1 Can Be Only One", eq);
+            Assert.Equal("Wip Status New Added", eq);
   
         }
 
@@ -300,9 +300,30 @@ namespace ToDoWebAppTests
             }));
         }
 
+        /* then creating/editing TodoItems with priority 1, description must exist, and must have at least 140 chars.*/
+
+        [Fact]
+        public void AddCorrectDescriptionPriority1_PassBadDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam", /* 1697 char */
+                Description = "DesDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioscriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioonPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAM",
+                priority = 1
+            }));
+        }
+
+
+
         /********************************/
         /*Against(PassUnValidData) TEST*/
-        /******************************/
+                /******************************/
 
         public static IEnumerable<object[]> BadPriority = new List<object[]>
         {

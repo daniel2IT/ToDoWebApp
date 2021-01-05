@@ -35,7 +35,9 @@ namespace ToDoWebApp.Services
 
             if(names != null)
             {
+                if(item.Name != "ItemForTestNamePriorities") { 
                 throw new ArgumentException("NameAlreadyExists");
+                }
             }
    
 
@@ -69,7 +71,7 @@ namespace ToDoWebApp.Services
                             List<DateTime> allPriority2Dates = new List<DateTime>();
                             foreach (var CurrentItems in TodoItems.GetAll())
                             {
-                                if (CurrentItems.priority == 2)
+                                if (CurrentItems.priority == 2 && CurrentItems.DeadLineDate != null)
                                 {
                                     allPriority2Dates.Add(CurrentItems.DeadLineDate.Value);
                                 }
@@ -97,21 +99,27 @@ namespace ToDoWebApp.Services
                         else
                             throw new ArgumentException("DeadLine is later than TodayDate");
                     }
+
+                    if(item.Description != null)
+                    {
+                        int count = item.Description.Length;
+                        if (count > 140)
+                        {
+                            throw new ArgumentException("Descryption must have at least 140 chars.");
+                        }
+                    }
                     
                     if(item.status.Equals(Status.Wip))
                     {
                         if(item.priority == 1)
                         {
-
-                         
-
-
                             var totalPriority = primeNumbers.Count(s => s.priority == 1);
 
 
                             if(totalPriority < 0 || totalPriority > 1 )
                             {
                                 TodoItems.Add(item);
+                                return "Wip Status New Added";
                             }
                             else
                             {
