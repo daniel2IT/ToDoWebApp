@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ToDoWebApp.Data.Intefaces;
+﻿using System.Collections.Generic;
 using ToDoWebApp.Models;
 using ToDoWebApp.Repository;
 
@@ -10,10 +6,6 @@ namespace ToDoWebApp.Services
 {
     public class ToDoItemService : IToDoItemService
     {
-/*        public ToDoItemService()
-        {
-        }
-*/
         private readonly TodoAPIRepository TodoItems;
         public ToDoItemService(TodoAPIRepository todoItems)
         {
