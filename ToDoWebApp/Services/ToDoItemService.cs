@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ToDoWebApp.Models;
 using ToDoWebApp.Repository;
 
@@ -10,6 +12,7 @@ namespace ToDoWebApp.Services
         public ToDoItemService(TodoAPIRepository todoItems)
         {
             TodoItems = todoItems;
+
         }
 
         public string Add(TodoItem item)
@@ -19,7 +22,20 @@ namespace ToDoWebApp.Services
                 return "False";
             }
 
-            if(item.priority >= 0 )
+
+            // Create a list of Items to Check Name Exists or Not ...
+            IEnumerable<TodoItem> GetAll = TodoItems.GetAll();
+            List<TodoItem> primeNumbers = GetAll.ToList();
+
+            var names = primeNumbers.FirstOrDefault(m => m.Name == item.Name);
+
+            if(names != null)
+            {
+                throw new ArgumentException("NameAlreadyExists");
+            }
+   
+
+            if (item.priority >= 0 )
             {
                 if(item.priority <= 5)
                 {  
@@ -56,6 +72,18 @@ namespace ToDoWebApp.Services
             {
                 return "False";
             }
+
+            // Create a list of Items to Check Name Exists or Not ...
+            IEnumerable<TodoItem> GetAll = TodoItems.GetAll();
+            List<TodoItem> primeNumbers = GetAll.ToList();
+
+            var names = primeNumbers.FirstOrDefault(m => m.Name == item.Name);
+
+            if (names != null){ 
+            
+                throw new ArgumentException("NameAlreadyExists");
+            }
+
 
             if (item.priority >= 0)
             {

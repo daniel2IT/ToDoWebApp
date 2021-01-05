@@ -28,7 +28,12 @@ namespace ToDoWebApp.Repository
                 Description = "Description2",
                 priority = 3
             });
-       
+            Add(new TodoItem
+            {
+                Name = "ItemForTestAlreadeCreated",
+                Description = "Description3",
+                priority = 3
+            });
         }
 
         public void Add(TodoItem item)

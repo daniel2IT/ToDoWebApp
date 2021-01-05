@@ -25,6 +25,7 @@ namespace ToDoWebApp.Models
         }
         /**/
         [DataType(DataType.Text)]
+        [StringLength(140)]
         public string? Description
         {
             get;

@@ -1,4 +1,5 @@
 ﻿using Moq;
+using System;
 using System.Collections.Generic;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
@@ -42,6 +43,22 @@ namespace ToDoWebAppTests
 
                     // Assert
                     Assert.Equal("True", eq);
+        }
+
+        [Fact]
+        public void AddAlreadyExistDataName_UnPassingAlreadyExistingData_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem /* id - 3 */
+            {
+                Name = "ItemForTestAlreadeCreated",
+                Description = "DescriptionForTest",
+                priority = 4
+            }));
         }
 
 
@@ -98,6 +115,25 @@ namespace ToDoWebAppTests
             Assert.Equal( "ItemForUpdated", mark.Name);
         }
 
+        [Fact]
+        public void UpdateToAlreadyExistDataName_UnPassingAlreadyExistingData_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            var mark = contextMock.Object.Find("2"); /* Id = 4 */
+            Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
+            Assert.Throws<ArgumentException>(() => service.Update(new TodoItem
+            {
+                TodoItemId = 2,
+                Name = "ItemForTestAlreadeCreated",
+                Description = "DescriptionUpdated",
+                priority = 4
+            }));
+        }
 
         [Fact]
         public void GetAll_PassValidData_Ok()
