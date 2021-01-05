@@ -173,6 +173,50 @@ namespace ToDoWebAppTests
             }));
         }
 
+        /* then creating/editing TodoItems, we can have only 1 Wip status item with priority 1. */
+        [Fact]
+        public void AddCorrectWipStatusNumber_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Add(new TodoItem
+            {
+                Name = "Item132323",
+                Description = "Description1",
+                priority = 1,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.NotEqual("Wip Status With Priority1 Can Be Only One", eq);
+  
+        }
+
+        [Fact]
+        public void UpdateCorrectWipStatusNumber_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Update(new TodoItem
+            {
+                CategoryId = 2,
+                Name = "Item2dasdasd",
+                Description = "Description13232",
+                priority = 1,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.Equal("Updated Successfully", eq);
+
+        }
+
 
         /********************************/
         /*Against(PassUnValidData) TEST*/

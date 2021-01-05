@@ -57,6 +57,27 @@ namespace ToDoWebApp.Services
                         else
                             throw new ArgumentException("DeadLine is later than TodayDate");
                     }
+                    
+                    if(item.status.Equals(Status.Wip))
+                    {
+                        if(item.priority == 1)
+                        {
+             
+                            var query = primeNumbers.GroupBy(x => Status.Wip)
+                              .Where(g => g.Count() > 1)
+                              .Select(y => new { Element = y.Key, Counter = y.Count() })
+                              .ToList();
+
+                            if(query != null)
+                            {
+                                TodoItems.Add(item);
+                            }
+                            else
+                            {
+                                return "Wip Status With Priority1 Can Be Only One";
+                            }
+                        }
+                    }
 
                     TodoItems.Add(item);
                     return "True";
@@ -107,7 +128,28 @@ namespace ToDoWebApp.Services
             if (item.priority >= 0)
             {
                 if (item.priority <= 5)
-                {
+                { 
+                        if (item.priority == 1)
+                        {
+
+                            var queryStatus = primeNumbers.GroupBy(x => Status.Wip, xx => xx.TodoItemId == item.TodoItemId)
+                              .Where(g => g.Count() > 1)
+                              .Select(y => new { Element = y.Key, Counter = y.Count() })
+                              .ToList();
+
+                            if (queryStatus != null)
+                            {
+                                TodoItems.Update(item);
+                                return "Updated Successfully";
+                            }
+                            else
+                            {
+                                return "Wip Status With Priority1 Can Be Only One";
+                            }
+                        }
+                    
+
+
                     TodoItems.Update(item);
                     return "True";
                 }

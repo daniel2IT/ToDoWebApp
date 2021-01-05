@@ -15,24 +15,27 @@ namespace ToDoWebApp.Repository
         public List<TodoItem> todoItem { get; set; } 
         
         public TodoAPIRepository()
-        {           
+        {
             Add(new TodoItem
             {
                 Name = "Item1",
                 Description = "Description1",
-                priority = 1
+                priority = 1,
+                status = Status.Wip
             });
             Add(new TodoItem
             {
                 Name = "Item2",
                 Description = "Description2",
-                priority = 3
+                priority = 2,
+                status = Status.Wip
             });
             Add(new TodoItem
             {
                 Name = "ItemForTestAlreadeCreated",
                 Description = "Description3",
-                priority = 3
+                priority = 2,
+                status = Status.Wip
             });
         }
 
