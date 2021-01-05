@@ -1,7 +1,6 @@
 ﻿using Moq;
 using System;
 using System.Collections.Generic;
-using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
 using ToDoWebApp.Repository;
 using ToDoWebApp.Services;
@@ -175,7 +174,7 @@ namespace ToDoWebAppTests
 
         /* then creating/editing TodoItems, we can have only 1 Wip status item with priority 1. */
         [Fact]
-        public void AddCorrectWipStatusNumber_PassGoodStatus_Ok()
+        public void AddCorrectWipStatusNumberPriority1_PassGoodStatus_Ok()
         {
             // Arange ()
             var contextMock = new Mock<TodoAPIRepository>();
@@ -196,7 +195,7 @@ namespace ToDoWebAppTests
         }
 
         [Fact]
-        public void UpdateCorrectWipStatusNumber_PassGoodStatus_Ok()
+        public void UpdateCorrectWipStatusNumberPriority1_PassGoodStatus_Ok()
         {
             // Arange ()
             var contextMock = new Mock<TodoAPIRepository>();
@@ -205,7 +204,7 @@ namespace ToDoWebAppTests
             // Act
             var eq = service.Update(new TodoItem
             {
-                CategoryId = 2,
+                TodoItemId = 1,
                 Name = "Item2dasdasd",
                 Description = "Description13232",
                 priority = 1,
@@ -214,8 +213,52 @@ namespace ToDoWebAppTests
 
             // Assert
             Assert.Equal("Updated Successfully", eq);
+        }
+
+
+        /* then editing TodoItems, we can have only 3 Wip status items with priority 2. --- Without creating */
+        [Fact]
+        public void AddCorrectWipStatusNumberPriority2_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Add(new TodoItem
+            {
+                Name = "Item132323",
+                Description = "Description1",
+                priority = 2,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.Equal("Wip Status With Priority1 Can Be Only One", eq);
 
         }
+
+/*       [Fact]
+        public void UpdateCorrectWipStatusNumberPriority2_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Update(new TodoItem
+            {
+                TodoItemId = 4,
+                Name = "Item2dasdasd",
+                Description = "Description13232",
+                priority = 2,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.Equal("Updated Successfully", eq);
+        }*/
+
 
 
         /********************************/

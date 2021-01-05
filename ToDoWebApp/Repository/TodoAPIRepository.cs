@@ -18,6 +18,7 @@ namespace ToDoWebApp.Repository
         {
             Add(new TodoItem
             {
+                TodoItemId = 1,
                 Name = "Item1",
                 Description = "Description1",
                 priority = 1,
@@ -25,6 +26,7 @@ namespace ToDoWebApp.Repository
             });
             Add(new TodoItem
             {
+                TodoItemId = 2,
                 Name = "Item2",
                 Description = "Description2",
                 priority = 2,
@@ -32,7 +34,16 @@ namespace ToDoWebApp.Repository
             });
             Add(new TodoItem
             {
+                TodoItemId = 3,
                 Name = "ItemForTestAlreadeCreated",
+                Description = "Description3",
+                priority = 2,
+                status = Status.Wip
+            });
+            Add(new TodoItem
+            {
+                TodoItemId = 4,
+                Name = "ItemForTestAlreadeCreate3232d",
                 Description = "Description3",
                 priority = 2,
                 status = Status.Wip

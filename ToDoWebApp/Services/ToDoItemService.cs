@@ -62,15 +62,30 @@ namespace ToDoWebApp.Services
                     {
                         if(item.priority == 1)
                         {
-             
-                            var query = primeNumbers.GroupBy(x => Status.Wip)
-                              .Where(g => g.Count() > 1)
-                              .Select(y => new { Element = y.Key, Counter = y.Count() })
-                              .ToList();
 
-                            if(query != null)
+                      
+
+                            var totalPriority = primeNumbers.Count(s => s.priority == 1);
+
+
+                            if(totalPriority < 0 || totalPriority > 1 )
                             {
                                 TodoItems.Add(item);
+                            }
+                            else
+                            {
+                                return "Wip Status With Priority1 Can Be Only One";
+                            }
+                        }
+                        if (item.priority == 2)
+                        {
+
+                            int totalPriority = primeNumbers.Count(s => s.priority == 2);
+
+                            if (totalPriority >= 0 && totalPriority < 3)
+                            {
+                                TodoItems.Add(item);
+                                return "Successfully";
                             }
                             else
                             {
@@ -118,6 +133,7 @@ namespace ToDoWebApp.Services
             List<TodoItem> primeNumbers = GetAll.ToList();
 
             var names = primeNumbers.FirstOrDefault(m => m.Name == item.Name);
+       
 
             if (names != null){ 
             
@@ -131,16 +147,25 @@ namespace ToDoWebApp.Services
                 { 
                         if (item.priority == 1)
                         {
+                        //Static from DB...
+                        var realCurrentToDoItem = primeNumbers.FirstOrDefault(m => m.TodoItemId == item.TodoItemId);
 
-                            var queryStatus = primeNumbers.GroupBy(x => Status.Wip, xx => xx.TodoItemId == item.TodoItemId)
+                        //HOw much All in All...
+                        var queryStatus = primeNumbers.GroupBy(x => Status.Wip, xx => xx.priority == item.priority)
                               .Where(g => g.Count() > 1)
-                              .Select(y => new { Element = y.Key, Counter = y.Count() })
+                              .Select(y => new { Element = y.Key, Counter = y.Count()})
                               .ToList();
 
-                            if (queryStatus != null)
+                            if (queryStatus.Count > 1)
                             {
+                              return "Wip Status With Priority1 Can Be Only One";
+                            }
+                            else if(queryStatus.Count == 1)
+                            {
+                                if(realCurrentToDoItem != null){ 
                                 TodoItems.Update(item);
                                 return "Updated Successfully";
+                            }
                             }
                             else
                             {
