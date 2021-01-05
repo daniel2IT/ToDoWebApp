@@ -2,12 +2,10 @@
 <h2 align="center">Season 2 of academy "Coding Camp Online"</h2>
 
 <p align="center">
-    <img width="260" height="200" src="https://lh3.googleusercontent.com/nWof31opqhovhp3cWYIO-7m6eDvWFFdT1BBAOmDThVViJtmtHWwo3eD1VYxdB4yj9qiAGzM=s85">
+    <a data-flickr-embed="true" href="https://daniel2it.github.io/Demo_Portfolio/" title=""><img src="https://live.staticflickr.com/65535/50663803978_5c73ec36b4_c.jpg" height="720" width="600" alt=""></a>
 </p>
 
-### We would like to welcome developers who already started learning about .NET but still want to improve and learn more in our 10 weeks course program. #LearnWithUs
-
-### FREE .NET course every Tuesday starting 17th of November at 6 pm.
+### .NET course Where:
 
 <h2 align="center"> You already have to know: </h2>
 

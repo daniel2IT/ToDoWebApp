@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "ToDoWebAppDb": "Server=(localdb)\\MSSQLLocalDB;Initial Catalog=ToDoDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  }
+}
