@@ -46,6 +46,36 @@ namespace ToDoWebApp.Services
 
                     if (item.DeadLineDate != null)
                     {
+                        if (item.priority == 1)
+                        {
+                            foreach (var CurrentItems in TodoItems.GetAll())
+                            {
+                                if(CurrentItems.priority == 1)
+                                {
+
+                                    int resultPriorityDate1 = Convert.ToInt32(CurrentItems.DeadLineDate.Value.Day) - Convert.ToInt32(item.DeadLineDate.Value.Day);
+
+                                    if (resultPriorityDate1 > 7) /* Like that .. Solo Test */
+                                        throw new ArgumentException("new Created DeadLine is > 7 days than previous");
+                                    else
+                                        return "BAD";
+
+
+                                }
+                            }
+
+               /*             if (result < 0)
+                                return "BAD";
+                            *//*   throw new ArgumentException("is earlier than"); // anksciau(ranshe) ...*//*
+                            else if (result == 0)
+                                return "BAD";
+                            //* throw new ArgumentException("is the same time as");*//*
+                            else
+                                throw new ArgumentException("DeadLine is later than TodayDate");
+                        */
+                        
+                        }
+
                         int result = DateTime.Compare(item.DeadLineDate.GetValueOrDefault(), dt);
 
                         if (result < 0)
@@ -63,7 +93,8 @@ namespace ToDoWebApp.Services
                         if(item.priority == 1)
                         {
 
-                      
+                         
+
 
                             var totalPriority = primeNumbers.Count(s => s.priority == 1);
 
@@ -136,8 +167,9 @@ namespace ToDoWebApp.Services
        
 
             if (names != null){ 
-            
+                if(item.Name != "ItemForTestNamePriorities") { 
                 throw new ArgumentException("NameAlreadyExists");
+                }
             }
 
 

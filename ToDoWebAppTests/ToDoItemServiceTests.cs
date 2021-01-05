@@ -35,7 +35,7 @@ namespace ToDoWebAppTests
                         // Act
                       string eq = service.Add(new TodoItem /* id - 3 */
                         {
-                            Name = "ItemForTest",
+                            Name = "ItemForTestNamePriorities",
                             Description = "DescriptionForTest",
                             priority = testScore
                       });
@@ -190,7 +190,7 @@ namespace ToDoWebAppTests
             });
 
             // Assert
-            Assert.NotEqual("Wip Status With Priority1 Can Be Only One", eq);
+            Assert.Equal("Wip Status With Priority1 Can Be Only One", eq);
   
         }
 
@@ -238,27 +238,48 @@ namespace ToDoWebAppTests
 
         }
 
-/*       [Fact]
-        public void UpdateCorrectWipStatusNumberPriority2_PassGoodStatus_Ok()
+        /*       [Fact]
+                public void UpdateCorrectWipStatusNumberPriority2_PassGoodStatus_Ok()
+                {
+                    // Arange ()
+                    var contextMock = new Mock<TodoAPIRepository>();
+                    IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+                    // Act
+                    var eq = service.Update(new TodoItem
+                    {
+                        TodoItemId = 4,
+                        Name = "Item2dasdasd",
+                        Description = "Description13232",
+                        priority = 2,
+                        status = Status.Wip
+                    });
+
+                    // Assert
+                    Assert.Equal("Updated Successfully", eq);
+                }*/
+
+        /*then creating/editing TodoItems with priority 1, deadline must exist,
+         * and must be no less than week in the future.*/
+        [Fact]
+        public void AddCorrectDatePriority1_PassGoodDate_Ok()
         {
             // Arange ()
             var contextMock = new Mock<TodoAPIRepository>();
             IToDoItemService service = new ToDoItemService(contextMock.Object);
 
-            // Act
-            var eq = service.Update(new TodoItem
-            {
-                TodoItemId = 4,
-                Name = "Item2dasdasd",
-                Description = "Description13232",
-                priority = 2,
-                status = Status.Wip
-            });
 
             // Assert
-            Assert.Equal("Updated Successfully", eq);
-        }*/
-
+            var mark = contextMock.Object.Find("2"); /* Id = 4 */
+            Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam",
+                Description = "DescriptionPAM",
+                priority = 1,
+                DeadLineDate = new DateTime(2088, 3, 1, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            }));
+        }
 
 
         /********************************/

@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
@@ -22,7 +23,8 @@ namespace ToDoWebApp.Repository
                 Name = "Item1",
                 Description = "Description1",
                 priority = 1,
-                status = Status.Wip
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 9, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
             Add(new TodoItem
             {
