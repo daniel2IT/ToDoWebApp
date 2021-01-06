@@ -238,27 +238,6 @@ namespace ToDoWebAppTests
 
         }
 
-        /*       [Fact]
-                public void UpdateCorrectWipStatusNumberPriority2_PassGoodStatus_Ok()
-                {
-                    // Arange ()
-                    var contextMock = new Mock<TodoAPIRepository>();
-                    IToDoItemService service = new ToDoItemService(contextMock.Object);
-
-                    // Act
-                    var eq = service.Update(new TodoItem
-                    {
-                        TodoItemId = 4,
-                        Name = "Item2dasdasd",
-                        Description = "Description13232",
-                        priority = 2,
-                        status = Status.Wip
-                    });
-
-                    // Assert
-                    Assert.Equal("Updated Successfully", eq);
-                }*/
-
         /*then creating/editing TodoItems with priority 1, deadline must exist,
          * and must be no less than week in the future.*/
         [Fact]
@@ -270,8 +249,6 @@ namespace ToDoWebAppTests
 
 
             // Assert
-            var mark = contextMock.Object.Find("2"); /* Id = 4 */
-            Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
             Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
             {
                 Name = "PamPamPam",
@@ -319,11 +296,24 @@ namespace ToDoWebAppTests
             }));
         }
 
+        /*
+                then deleting TodoItems it’s status can’t be ‘Planned’.*/
+        [Fact]
+        public void RemovePlannedStatus_unValidToDeleteData_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => (service.Remove("5"))); /* just 5 id for test with Planned.. */
+        }
+
 
 
         /********************************/
         /*Against(PassUnValidData) TEST*/
-                /******************************/
+            /******************************/
 
         public static IEnumerable<object[]> BadPriority = new List<object[]>
         {
@@ -356,21 +346,6 @@ namespace ToDoWebAppTests
 
         }
 
-
-        [Fact]
-        public void Remove_PassUnValidData_Ok()
-        {
-            // Arange ()
-            var contextMock = new Mock<TodoAPIRepository>();
-            IToDoItemService service = new ToDoItemService(contextMock.Object);
-
-            // Act
-            var mark = service.Remove("999");
-
-
-            // Assert
-            Assert.Null(mark);
-        }
 
 
         [Fact]

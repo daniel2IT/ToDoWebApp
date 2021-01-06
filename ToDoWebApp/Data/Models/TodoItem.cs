@@ -95,7 +95,8 @@ namespace ToDoWebApp.Models
         [Display(Name = "Done")]
         Done,
         [Display(Name = "Archived")]
-        Archived
-    
+        Archived,
+        [Display(Name = "Planned")]
+        Planned
     }
 }

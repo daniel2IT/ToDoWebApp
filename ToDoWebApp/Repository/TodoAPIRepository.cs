@@ -53,6 +53,14 @@ namespace ToDoWebApp.Repository
                 status = Status.Wip,
                 DeadLineDate = new DateTime(2088, 3, 5, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
+            Add(new TodoItem
+            {
+                TodoItemId = 5,
+                Name = "ItemForTestAlreadeCreate3232d",
+                Description = "Description3",
+                priority = 2,
+                status = Status.Planned
+            });
         }
 
         public void Add(TodoItem item)

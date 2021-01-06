@@ -167,7 +167,19 @@ namespace ToDoWebApp.Services
 
         public TodoItem Remove(string key)
         {
+            // Create a list of Items to Check Name Exists or Not ...
+            IEnumerable<TodoItem> GetAll = TodoItems.GetAll();
+            List<TodoItem> primeNumbers = GetAll.ToList();
+
+            var id = primeNumbers.FirstOrDefault(m => m.TodoItemId == Convert.ToInt32(key));
+
+            if (Status.Planned == id.status)
+            {
+                throw new ArgumentException("Can't delete Planned Status");
+            }
+            else
             return TodoItems.Remove(key);
+            
         }
 
         public string Update(TodoItem item)
