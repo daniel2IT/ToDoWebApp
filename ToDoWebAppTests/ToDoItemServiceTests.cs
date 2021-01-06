@@ -1,6 +1,6 @@
 ﻿using Moq;
+using System;
 using System.Collections.Generic;
-using ToDoWebApp.Data.Intefaces;
 using ToDoWebApp.Models;
 using ToDoWebApp.Repository;
 using ToDoWebApp.Services;
@@ -35,13 +35,30 @@ namespace ToDoWebAppTests
                         // Act
                       string eq = service.Add(new TodoItem /* id - 3 */
                         {
-                            Name = "ItemForTest",
+                            Name = "ItemForTestNamePriorities",
                             Description = "DescriptionForTest",
                             priority = testScore
                       });
 
                     // Assert
                     Assert.Equal("True", eq);
+        }
+
+        /* Can't create 2 TodoItems with same name (throw exception) */
+        [Fact]
+        public void AddAlreadyExistDataName_UnPassingAlreadyExistingData_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem /* id - 3 */
+            {
+                Name = "ItemForTestAlreadeCreated",
+                Description = "DescriptionForTest",
+                priority = 4
+            }));
         }
 
 
@@ -98,6 +115,26 @@ namespace ToDoWebAppTests
             Assert.Equal( "ItemForUpdated", mark.Name);
         }
 
+        /* Can't edit 2 TodoItems with same name (throw exception) */
+        [Fact]
+        public void UpdateToAlreadyExistDataName_UnPassingAlreadyExistingData_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            var mark = contextMock.Object.Find("2"); /* Id = 4 */
+        Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
+            Assert.Throws<ArgumentException>(() => service.Update(new TodoItem
+            {
+                TodoItemId = 2,
+                Name = "ItemForTestAlreadeCreated",
+                Description = "DescriptionUpdated",
+                priority = 4
+            }));
+        }
 
         [Fact]
         public void GetAll_PassValidData_Ok()
@@ -114,10 +151,169 @@ namespace ToDoWebAppTests
             Assert.NotNull(mark);
         }
 
+        /* TodoItem DeadlineDate must be higher then CreationDate. (throw exception)*/
+        [Fact]
+        public void AddCorrectDate_PassGoodDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            var mark = contextMock.Object.Find("2"); /* Id = 4 */
+            Assert.NotEqual("ItemForTestAlreadeCreated", mark.Name);
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam",
+                Description = "DescriptionPAM",
+                priority = 4,
+                DeadLineDate = new DateTime(2088, 3, 1, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            }));
+        }
+
+        /* then creating TodoItems, we can have only 1 Wip status item with priority 1. */
+        [Fact]
+        public void AddCorrectWipStatusNumberPriority1_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Add(new TodoItem
+            {
+                Name = "Item132323",
+                Description = "Description1",
+                priority = 1,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.Equal("Wip Status New Added", eq);
+  
+        }
+
+        [Fact]
+        public void UpdateCorrectWipStatusNumberPriority1_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Update(new TodoItem
+            {
+                TodoItemId = 1,
+                Name = "Item2dasdasd",
+                Description = "Description13232",
+                priority = 1,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.Equal("Updated Successfully", eq);
+        }
+
+
+        /* then editing TodoItems, we can have only 3 Wip status items with priority 2. --- Without creating */
+        [Fact]
+        public void AddCorrectWipStatusNumberPriority2_PassGoodStatus_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Act
+            var eq = service.Add(new TodoItem
+            {
+                Name = "Item132323",
+                Description = "Description1",
+                priority = 2,
+                status = Status.Wip
+            });
+
+            // Assert
+            Assert.Equal("Wip Status With Priority1 Can Be Only One", eq);
+
+        }
+
+        /*then creating/editing TodoItems with priority 1, deadline must exist,
+         * and must be no less than week in the future.*/
+        [Fact]
+        public void AddCorrectDatePriority1_PassGoodDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam",
+                Description = "DescriptionPAM",
+                priority = 1,
+                DeadLineDate = new DateTime(2088, 3, 1, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            }));
+        }
+
+        /*then creating/editing TodoItems with priority 2, deadline must exist, and must be no less than 2 days in the future.*/
+        [Fact]
+        public void AddCorrectDatePriority2_PassGoodDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam",
+                Description = "DescriptionPAM",
+                priority = 2,
+                DeadLineDate = new DateTime(2088, 3, 9, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            }));
+        }
+
+        /* then creating/editing TodoItems with priority 1, description must exist, and must have at least 140 chars.*/
+
+        [Fact]
+        public void AddCorrectDescriptionPriority1_PassBadDate_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => service.Add(new TodoItem
+            {
+                Name = "PamPamPam", /* 1697 char */
+                Description = "DesDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioscriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptioonPAMDescriptionPAMDescriptionPAMDescriptionPAMDescriptionPAM",
+                priority = 1
+            }));
+        }
+
+        /*
+                then deleting TodoItems it’s status can’t be ‘Planned’.*/
+        [Fact]
+        public void RemovePlannedStatus_unValidToDeleteData_Ok()
+        {
+            // Arange ()
+            var contextMock = new Mock<TodoAPIRepository>();
+            IToDoItemService service = new ToDoItemService(contextMock.Object);
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => (service.Remove("5"))); /* just 5 id for test with Planned.. */
+        }
+
+
 
         /********************************/
         /*Against(PassUnValidData) TEST*/
-        /******************************/
+            /******************************/
 
         public static IEnumerable<object[]> BadPriority = new List<object[]>
         {
@@ -150,21 +346,6 @@ namespace ToDoWebAppTests
 
         }
 
-
-        [Fact]
-        public void Remove_PassUnValidData_Ok()
-        {
-            // Arange ()
-            var contextMock = new Mock<TodoAPIRepository>();
-            IToDoItemService service = new ToDoItemService(contextMock.Object);
-
-            // Act
-            var mark = service.Remove("999");
-
-
-            // Assert
-            Assert.Null(mark);
-        }
 
 
         [Fact]

@@ -25,6 +25,7 @@ namespace ToDoWebApp.Models
         }
         /**/
         [DataType(DataType.Text)]
+        [StringLength(140)]
         public string? Description
         {
             get;
@@ -94,7 +95,8 @@ namespace ToDoWebApp.Models
         [Display(Name = "Done")]
         Done,
         [Display(Name = "Archived")]
-        Archived
-    
+        Archived,
+        [Display(Name = "Planned")]
+        Planned
     }
 }

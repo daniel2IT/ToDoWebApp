@@ -16,20 +16,51 @@ namespace ToDoWebApp.Repository
         public List<TodoItem> todoItem { get; set; } 
         
         public TodoAPIRepository()
-        {           
+        {
             Add(new TodoItem
             {
+                TodoItemId = 1,
                 Name = "Item1",
                 Description = "Description1",
-                priority = 1
+                priority = 1,
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 9, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
             Add(new TodoItem
             {
+                TodoItemId = 2,
                 Name = "Item2",
                 Description = "Description2",
-                priority = 3
+                priority = 2,
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 1, 7, 0, 0) // 3/1/2088 7:00:00 AM
             });
-       
+            Add(new TodoItem
+            {
+                TodoItemId = 3,
+                Name = "ItemForTestAlreadeCreated",
+                Description = "Description3",
+                priority = 2,
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 3, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            });
+            Add(new TodoItem
+            {
+                TodoItemId = 4,
+                Name = "ItemForTestAlreadeCreate3232d",
+                Description = "Description3",
+                priority = 2,
+                status = Status.Wip,
+                DeadLineDate = new DateTime(2088, 3, 5, 7, 0, 0) // 3/1/2088 7:00:00 AM
+            });
+            Add(new TodoItem
+            {
+                TodoItemId = 5,
+                Name = "ItemForTestAlreadeCreate3232d",
+                Description = "Description3",
+                priority = 2,
+                status = Status.Planned
+            });
         }
 
         public void Add(TodoItem item)
